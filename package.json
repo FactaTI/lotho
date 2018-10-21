@@ -2,9 +2,18 @@
   "name": "lotho",
   "private": true,
   "dependencies": {
-    "rails-ujs": ">=5.2.1",
-    "turbolinks": "5.1.1",
+    "@babel/preset-react": "^7.0.0",
+    "@rails/webpacker": "https://github.com/rails/webpacker",
+    "actioncable": ">=5.2.1",
     "activestorage": ">=5.2.1",
-    "actioncable": ">=5.2.1"  },
-  "version": "0.1.0"
+    "prop-types": "^15.6.2",
+    "rails-ujs": ">=5.2.1",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "turbolinks": "5.1.1"
+  },
+  "version": "0.1.0",
+  "devDependencies": {
+    "webpack-dev-server": "^3.1.9"
+  }
 }
