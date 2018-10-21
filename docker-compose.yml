@@ -1,0 +1,36 @@
+version: '2'
+
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: lotho
+      POSTGRES_PASSWORD: lotho
+    volumes:
+      - "${HOME}/.postgres-data:/var/lib/postgresql/data"
+  redis:
+    image: redis:3.2
+  api:
+    build: .
+    #env_file:
+    #  - ".env"
+    environment:
+      DOCKER_DB_HOST: 'db'
+      REDIS_PROVIDER: 'redis://redis:6379/1'
+      REDIS_URL: 'redis://redis:6379/1'
+    command: bundle exec rails s -b "0.0.0.0" -p 3000
+    volumes:
+      - "${PWD}:/lotho"
+    stdin_open: true
+    tty: true
+    ports:
+      - "3000:3000"
+      - "3035:3035"
+    depends_on:
+      - db
+      - redis
+    networks:
+      default:
+        aliases:
+          - api
+
